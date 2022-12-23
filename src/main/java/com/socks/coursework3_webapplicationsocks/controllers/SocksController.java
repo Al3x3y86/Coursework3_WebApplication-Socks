@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController()
 @RequestMapping("/socks")
 @Tag(name = "Носки", description = "CRUD-операции для работы с товаром 'Носки'")
-public class SocksController {
+public class SocksController  {
     private final SocksService socksService;
 
     public SocksController(SocksService socksService) {

@@ -1,6 +1,6 @@
 package com.socks.coursework3_webapplicationsocks.characteristic;
 
-public enum SocksColor {
+public enum SocksColor  {
     BLACK ("черный"),
     RED ("красный"),
     BLUE ("синий"),
