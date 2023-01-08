@@ -184,4 +184,5 @@ public class WarehouseRepository  {
     private void init() {
         warehouseList = listFromFile();
     }
+
 }

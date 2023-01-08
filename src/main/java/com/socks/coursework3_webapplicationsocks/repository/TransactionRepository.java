@@ -31,7 +31,7 @@ public class TransactionRepository  {
     static Long idCounter = 1L;
     TreeMap<Long, TransactionSocks> transactionList = new TreeMap<>();
 
-    public void addTransaction(int cottonPart,
+    public boolean addTransaction(int cottonPart,
                                SocksColor socksColor,
                                SocksSize socksSize,
                                int quantity,
@@ -54,6 +54,7 @@ public class TransactionRepository  {
                 transactionsType));
         transactionsFileService.saveTransactionsListToJsonFile(jsonFromList());
         transactionsFileService.saveTransactionsToTxtFile(viewAllTransactions());
+        return true;
     }
 
     public String viewAllTransactions() {
