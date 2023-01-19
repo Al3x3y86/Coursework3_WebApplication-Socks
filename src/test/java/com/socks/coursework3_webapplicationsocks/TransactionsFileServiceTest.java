@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -49,27 +50,25 @@ class TransactionsFileServiceTest {
     @Test
     @DisplayName("Тест метода по очистке Json файла из списка транзакций")
     void testCleanTransactionsListJson() throws IOException {
-        //Проверим работу тестируемого метода
+        //Проверяем метод и файл
         assertTrue(transactionsFileService.cleanTransactionsListJson());
-        //Проверяем, появился ли файл
         assertTrue(Files.exists(Path.of(pathJsonFileForTesting, nameJsonFileForTesting)));
-        //Удалим файл
-        assertTrue(Files.deleteIfExists(Path.of(pathJsonFileForTesting, nameJsonFileForTesting)));
-        //Проверим удаление файла
-        assertFalse(Files.exists(Path.of(pathJsonFileForTesting, nameJsonFileForTesting)));
+        //Читаем файл и возвращаем подтверждения что файл пустой
+        List<String> testJson = (Files.readAllLines(Path.of(pathJsonFileForTesting, nameJsonFileForTesting)));
+        assertTrue(testJson.isEmpty());
+
     }
 
     @Test
     @DisplayName("Тест метода по очистке Txt файла из списка транзакций")
     void testCleanTransactionsListTxt() throws IOException {
-        //Проверим работу тестируемого метода
+        //Проверяем метод и файл
         assertTrue(transactionsFileService.cleanTransactionsTxt());
-        //Проверяем, появился ли файл
         assertTrue(Files.exists(Path.of(pathTXTFileForTesting, nameTXTFileForTesting)));
-        //Удалим файл
-        assertTrue(Files.deleteIfExists(Path.of(pathTXTFileForTesting, nameTXTFileForTesting)));
-        //Проверим удаление файла
-        assertFalse(Files.exists(Path.of(pathTXTFileForTesting, nameTXTFileForTesting)));
+       //Читаем файл и возвращаем подтверждения что файл пустой
+        List<String> testTXT = (Files.readAllLines(Path.of(pathTXTFileForTesting, nameTXTFileForTesting)));
+        assertTrue(testTXT.isEmpty());
+
     }
 
     @Test
@@ -89,22 +88,18 @@ class TransactionsFileServiceTest {
     }
 
     @Test
-    @DisplayName("Тест метода по сохранению (записи) Json файла в списке транзакций")
-    void testSaveTransactionsListToJsonFile() {
+    @DisplayName("Тест метода по чтению сохраненного TXT файла в списке транзакций")
+    void testSaveAndReadTransactionsToTxtFile() throws IOException {
         String stringForSave = "string for save";
-        assertTrue(transactionsFileService.saveTransactionsListToJsonFile(stringForSave));
+        //Для проверки надо что-нибудь записать в файл, чтобы потом считать
+        transactionsFileService.saveTransactionsToTxtFile(stringForSave);
+        String savedString = Files.readString(Path.of(pathTXTFileForTesting, nameTXTFileForTesting));
+        assertEquals(stringForSave,savedString);
     }
 
     @Test
-    @DisplayName("Тест работы метода по сохранению (записи) Txt файла в списке транзакций")
-    void testSaveTransactionsToTxtFile() {
-        String stringForSave = "string for save";
-        assertTrue(transactionsFileService.saveTransactionsToTxtFile(stringForSave));
-    }
-
-    @Test
-    @DisplayName("Тест работы метода по чтению сохраненного Json файла в списке транзакций")
-    void testReadTransactionsListFromJsonFile() throws IOException {
+    @DisplayName("Тест метода по чтению сохраненного Json файла в списке транзакций")
+    void testSaveAndReadTransactionsListFromJsonFile() throws IOException {
         String stringForSave = "string for save";
         //Для проверки надо что-нибудь записать в файл, чтобы потом считать
         transactionsFileService.saveTransactionsListToJsonFile(stringForSave);

@@ -13,8 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,11 +25,11 @@ class SocksServiceTest {
 
     SocksColor socksColor = SocksColor.BLUE;
     SocksSize socksSize = SocksSize.L;
-    int cottonPart = 50;
-    int cottonMin = 45;
-    int cottonMax = 70;
-    int expectedValueSocks = 10;
-    int quantity = 100;
+    private static final int cottonPart = 50;
+    private static final int cottonMin = 45;
+    private static final int cottonMax = 70;
+    private static final int expectedValueSocks = 10;
+    private static final int quantity = 100;
 
 
     public SocksServiceTest() {
@@ -60,6 +59,15 @@ class SocksServiceTest {
         when(transactionRepository.addTransaction(cottonPart, socksColor, socksSize, quantity, TransactionsType.INCOMING)).thenReturn(true);
         boolean correctAddInStorage = socksService.addToWarehouse(socksColor,socksSize, cottonPart,quantity);
         assertTrue(correctAddInStorage);
+    }
+
+    @Test
+    @DisplayName("Тест метода - на неуспешное добавления носков в список")
+    void testAddToWarehouseNotSuccess() {
+        when(warehouseRepository.addInWarehouseRepository(cottonPart,socksColor,socksSize,quantity)).thenReturn(false);
+        when(transactionRepository.addTransaction(cottonPart, socksColor, socksSize, quantity, TransactionsType.INCOMING)).thenReturn(false);
+        boolean notCorrectAddInStorage = socksService.addToWarehouse(socksColor,socksSize, cottonPart,quantity);
+        assertFalse(notCorrectAddInStorage);
     }
 
     @Test
