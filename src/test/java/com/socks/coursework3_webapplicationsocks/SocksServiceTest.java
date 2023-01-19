@@ -31,7 +31,6 @@ class SocksServiceTest {
     private static final int expectedValueSocks = 10;
     private static final int quantity = 100;
 
-
     public SocksServiceTest() {
         socksService = new SocksService(transactionRepository, warehouseRepository);
     }

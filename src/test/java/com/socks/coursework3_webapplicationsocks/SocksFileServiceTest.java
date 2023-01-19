@@ -48,7 +48,6 @@ class SocksFileServiceTest {
         assertFalse(Files.exists(Path.of(pathFileForTesting, nameFileForTesting)));
     }
 
-
     @Test
     @DisplayName("Тест метода по получению (ранее сохраненного) Json файла из списка")
     void testGetSocksListJson() {
