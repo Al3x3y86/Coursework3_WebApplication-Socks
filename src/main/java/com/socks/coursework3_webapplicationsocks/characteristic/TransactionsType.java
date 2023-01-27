@@ -1,8 +1,8 @@
 package com.socks.coursework3_webapplicationsocks.characteristic;
 
-public enum TransactionsType {
+public enum TransactionsType  {
 
     ARRIVAL_OF_SOCKS,
     RELEASE_OF_SOCKS,
-    DELETE
+    INCOMING, CANCELLATION, OUTGOING, DELETE
 }

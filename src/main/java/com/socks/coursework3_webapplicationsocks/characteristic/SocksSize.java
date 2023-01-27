@@ -1,6 +1,6 @@
 package com.socks.coursework3_webapplicationsocks.characteristic;
 
-public enum SocksSize {
+public enum SocksSize  {
     S (31, 33),
     M (34, 36),
     L (37, 39),
