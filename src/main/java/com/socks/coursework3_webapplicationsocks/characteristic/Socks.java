@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 
-public class Socks {
+public class Socks  {
     private int cottonPart;
     private SocksColor socksColor;
     private SocksSize socksSize;

@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Service
-public class TransactionsFileService {
+public class TransactionsFileService  {
     @Value("${path.to.transactionsJson.file}")
     private String transactionsListFilePath;
 

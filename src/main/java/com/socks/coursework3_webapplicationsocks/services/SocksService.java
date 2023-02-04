@@ -8,7 +8,7 @@ import com.socks.coursework3_webapplicationsocks.repository.TransactionRepositor
 import org.springframework.stereotype.Service;
 
 @Service
-public class SocksService {
+public class SocksService  {
 
     private final TransactionRepository transactionRepository;
 
