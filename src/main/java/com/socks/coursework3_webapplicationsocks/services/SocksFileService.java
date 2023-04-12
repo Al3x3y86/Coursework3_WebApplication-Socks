@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Service
-public class SocksFileService {
+public class SocksFileService  {
 
     @Value("${path.to.socksListJson.file}")
     private String socksListFilePath;

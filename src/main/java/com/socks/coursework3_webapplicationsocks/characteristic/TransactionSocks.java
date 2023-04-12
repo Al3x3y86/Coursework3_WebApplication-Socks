@@ -3,7 +3,7 @@ package com.socks.coursework3_webapplicationsocks.characteristic;
 import lombok.Data;
 
 @Data
-public class TransactionSocks {
+public class TransactionSocks  {
 
     private int cottonPart;
     private SocksColor socksColor;

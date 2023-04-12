@@ -18,7 +18,7 @@ import java.util.Set;
 
 @Data
 @Repository
-public class WarehouseRepository {
+public class WarehouseRepository  {
 
     static Long idCounter = 1L;
     private HashMap<Long, Warehouse> warehouseList = new HashMap<>();

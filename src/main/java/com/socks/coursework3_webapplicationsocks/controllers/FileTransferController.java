@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @RequestMapping("/files")
 @Tag(name = "Импорт и экспорт файлов",
         description = "Операции для отправки и получения (сохранения) файлов")
-public class FileTransferController {
+public class FileTransferController  {
 
     private final SocksFileService socksFileService;
     private final TransactionsFileService transactionsFileService;

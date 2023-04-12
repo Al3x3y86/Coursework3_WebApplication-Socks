@@ -20,7 +20,7 @@ import java.util.TreeSet;
 
 @Data
 @Repository
-public class TransactionRepository {
+public class TransactionRepository  {
 
     private final TransactionsFileService transactionsFileService;
 
